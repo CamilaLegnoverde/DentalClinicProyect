@@ -2,7 +2,7 @@ package com.dh.proyect.dentalClinic.controller;
 
 
 import com.dh.proyect.dentalClinic.entity.Patient;
-import com.dh.proyect.dentalClinic.service.PatientService;
+import com.dh.proyect.dentalClinic.service.impl.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
