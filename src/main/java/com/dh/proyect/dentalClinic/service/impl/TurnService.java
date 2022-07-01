@@ -19,6 +19,8 @@ public class TurnService implements ITurnService {
     ITurnRepository turnRepository;
     @Autowired
     ObjectMapper mapper;
+    /* ---------------------------------------------------------------------*/
+    /*List all turns*/
     @Override
     public List<TurnDTO> turnList(){
         List<TurnDTO> listTurnDTO = new ArrayList<>();
@@ -28,6 +30,9 @@ public class TurnService implements ITurnService {
         }
         return listTurnDTO;
     }
+
+    /* ---------------------------------------------------------------------*/
+    /*Find turns by id*/
     @Override
     public TurnDTO findTurnById(Long id){
         Optional<Turn> turn = turnRepository.findById(id);
@@ -37,16 +42,26 @@ public class TurnService implements ITurnService {
         }
         return turnDTO;
     }
+
+    /* ---------------------------------------------------------------------*/
+    /*Save turns*/
     @Override
     public Turn saveTurn(Turn turn) {
         return turnRepository.save(turn);
     }
+
+    /* ---------------------------------------------------------------------*/
+    /*Update turns*/
     @Override
     public Turn updateTurn(Turn turn) {
         return turnRepository.saveAndFlush(turn);
     }
+
+    /* ---------------------------------------------------------------------*/
+    /*Remove turns*/
     @Override
     public void removeTurn(Long id) {
         turnRepository.deleteById(id);
     }
+    /* ---------------------------------------------------------------------*/
 }

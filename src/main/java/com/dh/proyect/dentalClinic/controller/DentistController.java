@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+/*@RestController
 @RequestMapping("/dentist")
 public class DentistController {
     @Autowired
@@ -48,4 +48,4 @@ public class DentistController {
         }
         return repsonse;
     }
-}
+}*/

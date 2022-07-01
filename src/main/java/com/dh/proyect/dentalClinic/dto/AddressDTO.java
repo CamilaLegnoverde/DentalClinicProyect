@@ -3,23 +3,23 @@ package com.dh.proyect.dentalClinic.dto;
 
 public class AddressDTO {
     //Nos permite transportar información de una capa a la otra
-    private String place;
+    private String city;
     private String province;
 
     public AddressDTO() {
     }
 
-    public AddressDTO(String place, String province) {
-        this.place = place;
+    public AddressDTO(String city, String province) {
+        this.city = city;
         this.province = province;
     }
 
-    public String getPlace() {
-        return place;
+    public String getCity() {
+        return city;
     }
 
-    public void setPlace(String place) {
-        this.place = place;
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public String getProvince() {

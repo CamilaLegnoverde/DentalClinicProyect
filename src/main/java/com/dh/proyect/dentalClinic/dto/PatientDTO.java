@@ -1,6 +1,8 @@
 package com.dh.proyect.dentalClinic.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class PatientDTO {
 
     private Long id;
@@ -9,6 +11,7 @@ public class PatientDTO {
     private String email;
     private String identification;
 
+    //Constructor
     public PatientDTO() {
     }
 
@@ -19,6 +22,7 @@ public class PatientDTO {
         this.email = email;
         this.identification = identification;
     }
+    //Getters and setters
 
     public Long getId() {
         return id;

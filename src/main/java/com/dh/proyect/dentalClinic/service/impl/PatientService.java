@@ -20,7 +20,8 @@ public class PatientService implements IPatientService {
     @Autowired
     ObjectMapper mapper;
 
-
+    /* ---------------------------------------------------------------------*/
+    /*List all patients*/
     @Override
     public List<PatientDTO> patientList() {
         List<PatientDTO> listPatientDTO = new ArrayList<>();
@@ -31,6 +32,8 @@ public class PatientService implements IPatientService {
         return listPatientDTO;
     }
 
+    /* ---------------------------------------------------------------------*/
+    /*Find patient by id*/
     @Override
     public PatientDTO findPatientById(Long id) {
         Optional<Patient> patient = patientRepository.findById(id);
@@ -42,18 +45,24 @@ public class PatientService implements IPatientService {
         //Si es null devuelve null
     }
 
+    /* ---------------------------------------------------------------------*/
+    /*Save patients*/
     @Override
     public Patient savePatient(Patient patient) {
         return patientRepository.save(patient);
     }
-
+    /* ---------------------------------------------------------------------*/
+    /*Update patients*/
     @Override
     public Patient updatePatient(Patient patient) {
         return patientRepository.saveAndFlush(patient);
     }
 
+    /* ---------------------------------------------------------------------*/
+    /*Remove patients*/
     @Override
     public void removePatient(Long id) {
         patientRepository.deleteById(id);
     }
+    /* ---------------------------------------------------------------------*/
 }

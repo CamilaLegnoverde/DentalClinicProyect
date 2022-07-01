@@ -1,7 +1,9 @@
 package com.dh.proyect.dentalClinic.controller;
 
 
+import com.dh.proyect.dentalClinic.dto.PatientDTO;
 import com.dh.proyect.dentalClinic.entity.Patient;
+import com.dh.proyect.dentalClinic.service.IPatientService;
 import com.dh.proyect.dentalClinic.service.impl.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,13 +17,17 @@ import java.util.List;
 public class PatientController {
     //Recibe la solicitud de la vista (hay que asociarlo con la vista), lo procesa y soluciona.
     @Autowired
-    private PatientService patientService;
+    private IPatientService patientService;
 
+    /* ---------------------------------------------------------------------*/
+    /*List all patients*/
     @GetMapping
-    public List<Patient> patientList() {
+    public List<PatientDTO> patientList() {
         return patientService.patientList();
     }
 
+    /* ---------------------------------------------------------------------*/
+    /*Save patients*/
     @PostMapping
     //Requestbody convierte el json en un objeto paciente
     //Postman en clase 21 a partir min 51
@@ -29,28 +35,33 @@ public class PatientController {
         return patientService.savePatient(patient);
     }
 
-    //Para hacerlo en postman, el id si o si hay que ageregarlo. Ya que pusimos que en paciente requiera un id para buscar.
+    /* ---------------------------------------------------------------------*/
+    /*Update patients*/
     @PutMapping
     public Patient updatePatient(@RequestBody Patient patient){
         return patientService.updatePatient(patient);
     }
 
-    @GetMapping("/{id}") //No aplica a la vista
-    public ResponseEntity<Patient> findPatientById(@PathVariable Long id){
-        if (patientService.findPatientById(id).isPresent()){
-            return ResponseEntity.ok(patientService.findPatientById(id).get());
+    /* ---------------------------------------------------------------------*/
+    /*Find patient by id*/
+    @GetMapping("/{id}")
+    public ResponseEntity<PatientDTO> findPatientById(@PathVariable Long id){
+        if (patientService.findPatientById(id) != null){
+            return ResponseEntity.ok(patientService.findPatientById(id));
         }
         else
              return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
+    /* ---------------------------------------------------------------------*/
+    /*Delete patient*/
     @DeleteMapping("/{id}")
     public ResponseEntity deletePatient(@PathVariable Long id){
-       //Validamos que el paciente exista
-        if(patientService.findPatientById(id).isPresent()){
-            patientService.deletePatient(id);
+        if(patientService.findPatientById(id) != null){
+            patientService.removePatient(id);
             return ResponseEntity.ok("Deleted patient with id: " + id); //Check
         }
        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
+    /* ---------------------------------------------------------------------*/
 }

@@ -13,7 +13,7 @@ public class Address {
     @Column
     private int number;
     @Column
-    private String place; //localidad(?
+    private String city;
     @Column
     private String province;
 
@@ -24,19 +24,19 @@ public class Address {
     public Address() {
     }
 
-    public Address(Long id, String street, int number, String place, String province, Patient patient) {
+    public Address(Long id, String street, int number, String city, String province, Patient patient) {
         this.id = id;
         this.street = street;
         this.number = number;
-        this.place = place;
+        this.city = city;
         this.province = province;
         this.patient = patient;
     }
 
-    public Address(String street, int number, String place, String province, Patient patient) {
+    public Address(String street, int number, String city, String province, Patient patient) {
         this.street = street;
         this.number = number;
-        this.place = place;
+        this.city = city;
         this.province = province;
         this.patient = patient;
     }
@@ -66,12 +66,12 @@ public class Address {
         this.number = number;
     }
 
-    public String getPlace() {
-        return place;
+    public String getCity() {
+        return city;
     }
 
-    public void setPlace(String place) {
-        this.place = place;
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public String getProvince() {

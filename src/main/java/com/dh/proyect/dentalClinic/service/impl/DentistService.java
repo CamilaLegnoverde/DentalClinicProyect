@@ -19,6 +19,8 @@ public class DentistService implements IDenstistService {
     IDentistRepository dentistRepository;
     @Autowired
     ObjectMapper mapper;
+    /* ---------------------------------------------------------------------*/
+    /*List all dentists*/
     @Override
     public List<DentistDTO> dentistList(){
         List<DentistDTO> listDentistDTO = new ArrayList<>();
@@ -28,6 +30,9 @@ public class DentistService implements IDenstistService {
         }
         return listDentistDTO;
     }
+
+    /* ---------------------------------------------------------------------*/
+    /*Find dentists by id*/
     @Override
     public DentistDTO findDentistById(Long id){
         Optional<Dentist> dentist = dentistRepository.findById(id);
@@ -37,16 +42,26 @@ public class DentistService implements IDenstistService {
         }
         return dentistDTO;
     }
+
+    /* ---------------------------------------------------------------------*/
+    /*Save dentists*/
     @Override
     public Dentist saveDentist(Dentist dentist) {
         return dentistRepository.save(dentist);
     }
+
+    /* ---------------------------------------------------------------------*/
+    /*Update dentists*/
     @Override
     public Dentist updateDentist(Dentist dentist) {
         return dentistRepository.saveAndFlush(dentist);
     }
+
+    /* ---------------------------------------------------------------------*/
+    /*Remove dentists by id*/
     @Override
     public void removeDentist(Long id) {
         dentistRepository.deleteById(id);
     }
+    /* ---------------------------------------------------------------------*/
 }

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@RestController
+/*@RestController
 @RequestMapping("/turn")
 public class TurnController {
 
@@ -85,4 +85,4 @@ public class TurnController {
         else
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
-}
+}*/

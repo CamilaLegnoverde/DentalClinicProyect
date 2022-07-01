@@ -10,9 +10,9 @@ public interface IPatientService {
 
     PatientDTO findPatientById(Long id);
 
-    Patient savePatient(Patient patientDTO);
+    Patient savePatient(Patient patient);
 
-    Patient updatePatient(Patient patientDTO);
+    Patient updatePatient(Patient patient);
 
     void removePatient(Long id);
 }
