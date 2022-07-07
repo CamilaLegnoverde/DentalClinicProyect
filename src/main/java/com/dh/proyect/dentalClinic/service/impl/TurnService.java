@@ -1,7 +1,7 @@
 package com.dh.proyect.dentalClinic.service.impl;
 
-import com.dh.proyect.dentalClinic.dto.TurnDTO;
-import com.dh.proyect.dentalClinic.entity.Turn;
+import com.dh.proyect.dentalClinic.model.dto.TurnDTO;
+import com.dh.proyect.dentalClinic.model.entity.Turn;
 import com.dh.proyect.dentalClinic.repository.ITurnRepository;
 import com.dh.proyect.dentalClinic.service.ITurnService;
 import com.fasterxml.jackson.databind.ObjectMapper;

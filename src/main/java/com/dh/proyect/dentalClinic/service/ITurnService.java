@@ -1,7 +1,7 @@
 package com.dh.proyect.dentalClinic.service;
 
-import com.dh.proyect.dentalClinic.dto.TurnDTO;
-import com.dh.proyect.dentalClinic.entity.Turn;
+import com.dh.proyect.dentalClinic.model.dto.TurnDTO;
+import com.dh.proyect.dentalClinic.model.entity.Turn;
 
 import java.util.List;
 

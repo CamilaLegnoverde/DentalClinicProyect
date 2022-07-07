@@ -1,7 +1,7 @@
 package com.dh.proyect.dentalClinic.service;
 
-import com.dh.proyect.dentalClinic.dto.DentistDTO;
-import com.dh.proyect.dentalClinic.entity.Dentist;
+import com.dh.proyect.dentalClinic.model.dto.DentistDTO;
+import com.dh.proyect.dentalClinic.model.entity.Dentist;
 
 import java.util.List;
 
@@ -11,9 +11,9 @@ public interface IDenstistService {
 
     DentistDTO findDentistById(Long id);
 
-    Dentist saveDentist(Dentist dentist);
+    DentistDTO saveDentist(DentistDTO dentistDTO);
 
-    Dentist updateDentist(Dentist dentist);
+    DentistDTO updateDentist(DentistDTO dentistDTO);
 
     void removeDentist(Long id);
 }

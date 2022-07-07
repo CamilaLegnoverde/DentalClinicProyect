@@ -1,7 +1,7 @@
 package com.dh.proyect.dentalClinic.service.impl;
 
-import com.dh.proyect.dentalClinic.dto.DentistDTO;
-import com.dh.proyect.dentalClinic.entity.Dentist;
+import com.dh.proyect.dentalClinic.model.dto.DentistDTO;
+import com.dh.proyect.dentalClinic.model.entity.Dentist;
 import com.dh.proyect.dentalClinic.repository.IDentistRepository;
 import com.dh.proyect.dentalClinic.service.IDenstistService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+
 
 @Service
 public class DentistService implements IDenstistService {
@@ -35,26 +35,25 @@ public class DentistService implements IDenstistService {
     /*Find dentists by id*/
     @Override
     public DentistDTO findDentistById(Long id){
-        Optional<Dentist> dentist = dentistRepository.findById(id);
-        DentistDTO dentistDTO = null;
-        if (dentist.isPresent()){
-            dentistDTO = mapper.convertValue(dentist, DentistDTO.class);
-        }
-        return dentistDTO;
+        return mapper.convertValue(dentistRepository.findById(id), DentistDTO.class);
     }
 
     /* ---------------------------------------------------------------------*/
     /*Save dentists*/
     @Override
-    public Dentist saveDentist(Dentist dentist) {
-        return dentistRepository.save(dentist);
+    public DentistDTO saveDentist(DentistDTO dentistDTO) {
+        Dentist dentistToSave = mapper.convertValue(dentistDTO, Dentist.class);
+        dentistRepository.save(dentistToSave);
+        return mapper.convertValue(dentistToSave, DentistDTO.class);
     }
 
     /* ---------------------------------------------------------------------*/
     /*Update dentists*/
     @Override
-    public Dentist updateDentist(Dentist dentist) {
-        return dentistRepository.saveAndFlush(dentist);
+    public DentistDTO updateDentist(DentistDTO dentistDTO) {
+        Dentist dentistToModify = mapper.convertValue(dentistDTO, Dentist.class);
+        dentistRepository.saveAndFlush(dentistToModify);
+        return mapper.convertValue(dentistToModify, DentistDTO.class);
     }
 
     /* ---------------------------------------------------------------------*/

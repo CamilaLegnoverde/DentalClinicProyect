@@ -1,9 +1,7 @@
 package com.dh.proyect.dentalClinic.controller;
 
 
-import com.dh.proyect.dentalClinic.dto.PatientDTO;
-import com.dh.proyect.dentalClinic.entity.Patient;
-import com.dh.proyect.dentalClinic.service.IPatientService;
+import com.dh.proyect.dentalClinic.model.dto.PatientDTO;
 import com.dh.proyect.dentalClinic.service.impl.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,13 +15,13 @@ import java.util.List;
 public class PatientController {
     //Recibe la solicitud de la vista (hay que asociarlo con la vista), lo procesa y soluciona.
     @Autowired
-    private IPatientService patientService;
+    private PatientService patientService;
 
     /* ---------------------------------------------------------------------*/
     /*List all patients*/
-    @GetMapping
+    @GetMapping()
     public List<PatientDTO> patientList() {
-        return patientService.patientList();
+        return patientService.findAllPatients();
     }
 
     /* ---------------------------------------------------------------------*/
@@ -31,15 +29,19 @@ public class PatientController {
     @PostMapping
     //Requestbody convierte el json en un objeto paciente
     //Postman en clase 21 a partir min 51
-    public Patient savePatient(@RequestBody Patient patient){
-        return patientService.savePatient(patient);
+    public PatientDTO savePatient(@RequestBody PatientDTO patientDTO){
+        return patientService.savePatient(patientDTO);
     }
 
     /* ---------------------------------------------------------------------*/
     /*Update patients*/
     @PutMapping
-    public Patient updatePatient(@RequestBody Patient patient){
-        return patientService.updatePatient(patient);
+    public ResponseEntity<PatientDTO> updatePatient(@RequestBody PatientDTO patientDTO){
+        if(patientService.findPatientById(patientDTO.getId()) != null) {
+            return ResponseEntity.ok(patientService.updatePatient(patientDTO));
+        }
+        else
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
     /* ---------------------------------------------------------------------*/
@@ -56,10 +58,10 @@ public class PatientController {
     /* ---------------------------------------------------------------------*/
     /*Delete patient*/
     @DeleteMapping("/{id}")
-    public ResponseEntity deletePatient(@PathVariable Long id){
+    public ResponseEntity<?> deletePatient(@PathVariable Long id){
         if(patientService.findPatientById(id) != null){
             patientService.removePatient(id);
-            return ResponseEntity.ok("Deleted patient with id: " + id); //Check
+            return ResponseEntity.ok("Deleted patient with id: " + id);
         }
        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
