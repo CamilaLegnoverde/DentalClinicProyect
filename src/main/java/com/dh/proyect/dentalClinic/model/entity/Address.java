@@ -8,8 +8,7 @@ import javax.persistence.*;
 @Table(name = "Addresses")
 public class Address {
     @Id
-    //@SequenceGenerator(name="address_generator", sequenceName = "address_generator")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column
     private String street;

@@ -10,7 +10,7 @@ import java.util.Set;
 @Table(name = "Dentists")
 public class Dentist {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column
     private String surname;
@@ -21,26 +21,26 @@ public class Dentist {
 
     @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "dentist")
-    private Set<Turn> turns = new HashSet<>();
+    private Set<Appointment> appointments = new HashSet<>();
 
     //Constructor
     public Dentist(){
 
     }
 
-    public Dentist(Long id, String surname, String name, String license, Set<Turn> turns) {
+    public Dentist(Long id, String surname, String name, String license, Set<Appointment> appointments) {
         this.id = id;
         this.surname = surname;
         this.name = name;
         this.license = license;
-        this.turns = turns;
+        this.appointments = appointments;
     }
 
-    public Dentist(String surname, String name, String license, Set<Turn> turns) {
+    public Dentist(String surname, String name, String license, Set<Appointment> appointments) {
         this.surname = surname;
         this.name = name;
         this.license = license;
-        this.turns = turns;
+        this.appointments = appointments;
     }
 
     //Getters and setters
@@ -76,11 +76,11 @@ public class Dentist {
         this.license = license;
     }
 
-    public Set<Turn> getTurns() {
-        return turns;
+    public Set<Appointment> getTurns() {
+        return appointments;
     }
 
-    public void setTurns(Set<Turn> turns) {
-        this.turns = turns;
+    public void setTurns(Set<Appointment> appointments) {
+        this.appointments = appointments;
     }
 }

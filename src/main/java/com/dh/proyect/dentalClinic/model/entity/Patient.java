@@ -1,7 +1,6 @@
 package com.dh.proyect.dentalClinic.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -12,7 +11,7 @@ import java.util.Set;
 @Table(name = "Patients")
 public class Patient {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column
     private String surname;
@@ -31,13 +30,13 @@ public class Patient {
 
     @JsonIgnore
     @OneToMany(mappedBy = "patient", fetch = FetchType.LAZY)
-    private Set<Turn> turns = new HashSet<>();
+    private Set<Appointment> appointments = new HashSet<>();
 
     //Constructor
     public Patient() {
     }
 
-    public Patient(Long id, String surname, String name, String email, String identification, LocalDate admissionDate, Address address, Set<Turn> turns) {
+    public Patient(Long id, String surname, String name, String email, String identification, LocalDate admissionDate, Address address, Set<Appointment> appointments) {
         this.id = id;
         this.surname = surname;
         this.name = name;
@@ -45,7 +44,7 @@ public class Patient {
         this.identification = identification;
         this.admissionDate = admissionDate;
         this.address = address;
-        this.turns = turns;
+        this.appointments = appointments;
     }
 
     public Patient(String surname, String name, String email, String identification, LocalDate admissionDate, Address address) {
@@ -114,11 +113,11 @@ public class Patient {
         this.address = address;
     }
 
-    public Set<Turn> getTurns() {
-        return turns;
+    public Set<Appointment> getTurns() {
+        return appointments;
     }
 
-    public void setTurns(Set<Turn> turns) {
-        this.turns = turns;
+    public void setTurns(Set<Appointment> appointments) {
+        this.appointments = appointments;
     }
 }

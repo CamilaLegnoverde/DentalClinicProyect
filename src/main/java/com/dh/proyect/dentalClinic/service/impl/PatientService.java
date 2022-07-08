@@ -53,7 +53,6 @@ public class PatientService implements IPatientService {
     /*Update patients*/
     @Override
     public PatientDTO updatePatient(PatientDTO patientDTO) {
-        //foundbyid
         Patient patientToModify = mapper.convertValue(patientDTO, Patient.class);
         patientRepository.saveAndFlush(patientToModify);
         return mapper.convertValue(patientToModify, PatientDTO.class);

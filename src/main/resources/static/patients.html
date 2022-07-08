@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Patients Section</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<main>
+    <h1>Register new appointment</h1>
+    <form>
+        <div class="add-new-patient">
+            <div class="input-container">
+                <label for="surname">Surname</label>
+                <input type="text" name="surname" id="surname" placeholder="Enter your surname" required/>
+            </div>
+            <div class="input-container">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" placeholder="Enter your name" required/>
+            </div>
+            <div class="input-container">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="Enter your email" required/>
+            </div>
+            <div class="input-container">
+                <label for="identification">Identification</label>
+                <input type="text" name="identification" id="identification" placeholder="Enter your identification" required/>
+            </div>
+            <div class="input-container">
+                <label for="admissionDate">Admission Date</label>
+                <input type="date" name="date" id="admissionDate" placeholder="Enter the date" required/>
+            </div>
+            <div class="input-container">
+                <label for="street">Street</label>
+                <input type="text" name="street" id="street" placeholder="Enter your street" required/>
+            </div>
+            <div class="input-container">
+                <label for="number">Number</label>
+                <input type="number" name="number" id="number" placeholder="Enter your street number" required/>
+            </div>
+            <div class="input-container">
+                <label for="city">City</label>
+                <input type="text" name="city" id="city" placeholder="Enter your city" required/>
+            </div>
+            <div class="input-container">
+                <label for="province">Province</label>
+                <input type="text" name="province" id="province" placeholder="Enter your province" required/>
+            </div>
+        </div>
+        <div id="status-container">
+            <div id="loader" class="hidden">Saving patient...</div>
+            <div id="error-container" class="hidden"></div>
+        </div>
+        <button class="login-btn" type="button">Register</button>
+    </form>
+</main>
+<script src="./scripts/index.js"></script>
+</body>
+</html>

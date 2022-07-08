@@ -37,6 +37,7 @@ public class PatientController {
     /*Update patients*/
     @PutMapping
     public ResponseEntity<PatientDTO> updatePatient(@RequestBody PatientDTO patientDTO){
+        //Hacer variable respuesta para devolver la respuesta
         if(patientService.findPatientById(patientDTO.getId()) != null) {
             return ResponseEntity.ok(patientService.updatePatient(patientDTO));
         }
@@ -58,7 +59,7 @@ public class PatientController {
     /* ---------------------------------------------------------------------*/
     /*Delete patient*/
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deletePatient(@PathVariable Long id){
+    public ResponseEntity<String> deletePatient(@PathVariable Long id){
         if(patientService.findPatientById(id) != null){
             patientService.removePatient(id);
             return ResponseEntity.ok("Deleted patient with id: " + id);
